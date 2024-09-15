@@ -1,0 +1,185 @@
+```{r}
+library("here")
+library("vegan")
+library("lme4")
+library("car")
+library("tidyverse")
+library("readxl")
+library("ggfortify")
+library ("dplyr")
+library("RColorBrewer")
+library("extrafont") #trying to get times new roman
+#font_import()#imports everything.  Took awhile to import all fonts.
+```
+
+
+```{r}
+# get soil properties data
+
+    soil.props <- read_excel(here("230810_ANOVA_Soilpropertiesv3.xlsx"),
+            range = "A1:E34", col_types = c("text","text","numeric","numeric","numeric")) %>%
+        mutate(Location = as.factor(Location)) %>%
+        mutate(Core = as.factor(Core))
+
+# get qPCR pre-incubation data
+
+    soil.qPCR.pre <- read_excel(here("230810_ANOVA_Soilpropertiesv3.xlsx"),
+            range = "F1:H35", col_types = c("text","text","numeric")) %>%
+        rename(Location = Location_QPCR) %>%
+        rename(Abundance = Abundance_Pre)
+
+# get qPCR post-incubation data
+
+    soil.qPCR.post <- read_excel(here("230810_ANOVA_Soilpropertiesv3.xlsx"),
+            range = "I1:K29", col_types = c("text", "text", "numeric")) %>%
+        rename(Location = Location_QPCR_2) %>%
+        rename(Abundance = Abundance_Post_2)
+
+# concatenate qPCR data
+    
+    soil.qPCR <- bind_rows(list(`Pre-incubation` = soil.qPCR.pre, `Post-incubation` = soil.qPCR.post), .id = "pre.post") #%>%
+        #mutate(Location_QPCR = as.factor(Location_QPCR)) %>%
+      #mutate(Location_QPCR_2 = as.factor(Location_QPCR_2)) %>%
+        #mutate(Core = as.factor(Core))
+    rm(soil.qPCR.pre, soil.qPCR.post)
+    
+    ####
+    
+   
+```
+
+
+```{r}
+######################pH
+pH<-soil.props %>% 
+   ggplot(aes(x = factor(Location, level = c("BEO", "PT27", "PT45", "EAFB", "JR", "DC")), y = pH, col = Core)) + theme_bw() +
+    geom_point(position = position_dodge(width = 0.75), size = 3) + theme(axis.text= element_text(size=16), text = element_text(size=16), legend.text = element_text(size = 14), axis.title.x=element_blank()) +  theme(text = element_text(family = "Times New Roman")) +
+    stat_summary(fun.min = min, fun.max = max, position = position_dodge(width = 0.75), geom = "linerange", linewidth = 0.5, linetype = "dotted", show.legend = FALSE) +
+    stat_summary(fun = mean, geom = "crossbar", position = position_dodge(width = 0.75), width=0.4, linewidth = 0.3, show.legend = FALSE)
+print(pH)
+```
+```{r}
+# fixed effect for Location
+# random effect for Core:Location
+# -- note that Core is nested within Location (see e.g. https://www.muscardinus.be/statistics/nested.html)
+
+ph.mod <- soil.props %>%
+    lmer(pH ~ Location + (1|Core:Location), data = .)
+plot(ph.mod) # check for homoscedasticity - seems fine
+qqnorm(resid(ph.mod)) # check for normality - seems fine
+
+ph.mod.reduced <- update(ph.mod, pH ~ (1|Core:Location))
+anova(ph.mod, ph.mod.reduced) # Chisq = 30.063, df = 4, Pr(>Chisq) = 4.753e-06
+
+## -- Effect of location on pH clearly significant
+
+```
+
+
+
+
+
+```{r}
+######################GWC
+GWC<-soil.props %>% 
+    ggplot(aes(x = factor(Location, level = c("BEO", "PT27", "PT45", "EAFB", "JR", "DC")), y = GWC, col = Core)) + theme_bw() +
+    geom_point(position = position_dodge(width = 0.75), size = 3) + theme(axis.text= element_text(size=16), text = element_text(size=16), legend.text = element_text(size = 14), axis.title.x=element_blank()) + theme(text = element_text(family = "Times New Roman")) +
+    stat_summary(fun.min = min, fun.max = max, position = position_dodge(width = 0.75), geom = "linerange", linewidth = 0.5, linetype = "dotted", show.legend = FALSE) +
+    stat_summary(fun = mean, geom = "crossbar", position = position_dodge(width = 0.75), width=0.4, linewidth = 0.3, show.legend = FALSE) +
+    scale_y_continuous(limits = c(0,NA), expand = expansion(mult=c(0,0.1)))
+print(GWC)
+```
+
+
+
+```{r}
+#################LOI
+LOI<-soil.props %>% 
+    ggplot(aes(x = factor(Location, level = c("BEO", "PT27", "PT45", "EAFB", "JR", "DC")), y = LOI, col = Core)) + theme_bw() +
+    geom_point(position = position_dodge(width = 0.75), size = 3) + theme(axis.text= element_text(size=16), text = element_text(size=16), legend.text = element_text(size = 14), axis.title.x=element_blank()) + theme(text = element_text(family = "Times New Roman")) +
+    stat_summary(fun.min = min, fun.max = max, position = position_dodge(width = 0.75), geom = "linerange", linewidth = 0.5, linetype = "dotted", show.legend = FALSE) +
+    stat_summary(fun = mean, geom = "crossbar", position = position_dodge(width = 0.75), width=0.4, linewidth = 0.3, show.legend = FALSE) +
+    scale_y_continuous(limits = c(0,NA), expand = expansion(mult=c(0,0.1)))
+print(LOI)
+```
+
+
+```{r}
+#############PCA of soil properties
+pca.soil.props <- prcomp(soil.props %>% select(pH,GWC,LOI), scale. = TRUE)
+
+# all the brewer color palettes
+#   display.brewer.all()
+Set2<-c( "#E69F00", "#56B4E9", "#009E73" , "#F0E442", "#D55E00", "#CC79A7")
+
+
+
+PCA.soilprop<-autoplot(pca.soil.props, data = soil.props,
+         color = "Location", size = 3,
+         loadings = TRUE, loadings.label = TRUE, loadings.color = "black",
+         loadings.label.color = "black", loadings.label.vjust = 2, loadings.label.size = 5) +
+    scale_color_brewer(palette = "Set2") + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"),
+        text = element_text(size = 16, family = "Times New Roman"),
+        legend.text = element_text(size = 14, family = "Times New Roman"),
+        plot.title = element_text(family = "Times New Roman"),
+        plot.subtitle = element_text(family = "Times New Roman"),
+        plot.caption = element_text(family = "Times New Roman"),
+        strip.text = element_text(family = "Times New Roman"))
+print(PCA.soilprop)
+
+
+
+```
+
+
+
+
+
+```{r}
+########################QPCR (supplemental figure 2)
+qPCR<-soil.qPCR %>% 
+    mutate(pre.post = factor(pre.post, levels = c("Pre-incubation","Post-incubation"))) %>%
+    ggplot(aes(x = factor(Location, level = c("BEO", "PT27", "PT45", "EAFB", "JR", "DC")), y = Abundance, group = Core, col = Core, fill = Core)) +
+    geom_point(position = position_dodge(width = 0.75), size = 3) +
+    facet_grid(cols = vars(pre.post)) +
+    labs(y = "16S gene abundance / g dry soil") +
+    scale_y_log10() +
+    stat_summary(fun.min = min, fun.max = max, position = position_dodge(width = 0.75), geom = "linerange", size = 0.5, linetype = "dotted", show.legend = FALSE) +
+    stat_summary(fun = mean, geom = "crossbar", position = position_dodge(width = 0.75), width=0.4, size = 0.3, show.legend = FALSE) +theme_bw() + theme(axis.text= element_text(size=16), axis.text.x=element_text(angle=45, vjust=0.6), text = element_text(size=16), legend.text = element_text(size = 14), axis.title.x=element_blank()) + theme(text = element_text(family = "Times New Roman")) + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"),
+        text = element_text(size = 16, family = "Times New Roman"),
+        legend.text = element_text(size = 14, family = "Times New Roman"),
+        plot.title = element_text(family = "Times New Roman"),
+        plot.subtitle = element_text(family = "Times New Roman"),
+        plot.caption = element_text(family = "Times New Roman"),
+        strip.text = element_text(family = "Times New Roman"))
+print(qPCR)
+
+
+```
+
+```{r}
+########################figure 3
+library(patchwork)
+
+soil_props.fig<-(pH|GWC) / (LOI|PCA.soilprop) + plot_annotation(tag_levels = "a", tag_prefix = "(", tag_suffix = ")" ) & 
+  theme(plot.tag = element_text(size = 12))
+
+print(soil_props.fig)
+#ggsave(here("soil_props.fig"), plot=yup,device = "png", scale=1, units = "in", dpi = 600)
+
+# have to do in console because too small in rmarkdown. 
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
