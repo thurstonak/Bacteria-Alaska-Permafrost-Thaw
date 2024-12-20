@@ -31,7 +31,7 @@ ps5_Tf
 
 alphadiversity<-ps5
 
-Shannon_div <- plot_richness(alphadiversity, x="LocTime", measures=c("Shannon"))+geom_boxplot()+theme(axis.text= element_text(size=12),panel.background = element_rect(fill="white", color="#708090"),panel.border = element_rect(fill = NA, color="Black"),panel.grid.major = element_line(colour = "grey92"), panel.grid.minor = element_line(color = "white", size = 0.25), axis.text.x = element_text(size=12), strip.text=element_text(size=12), axis.title.x = element_text(size=12), axis.title.y = element_text(size=12))+scale_shape_manual(values=c(15,19),na.value=17)+ scale_x_discrete(limits=c("BEO_Ti","BEO_Tf","OT27_Ti","OT27_Tf", "OT45_Ti","OT45_Tf","TR_Ti","TR_Tf", "ME_Ti","ME_Tf"))
+Shannon_div <- plot_richness(alphadiversity, x="LocTime", measures=c("Shannon"))+geom_boxplot()+theme(axis.text= element_text(size=12),panel.background = element_rect(fill="white", color="#708090"),panel.border = element_rect(fill = NA, color="Black"),panel.grid.major = element_line(colour = "grey92"), panel.grid.minor = element_line(color = "white", size = 0.25), axis.text.x = element_text(size=12), strip.text=element_text(size=12), axis.title.x = element_text(size=12), axis.title.y = element_text(size=12))+ scale_x_discrete(limits=c("BEO_Ti","BEO_Tf","OT27_Ti","OT27_Tf", "OT45_Ti","OT45_Tf","TR_Ti","TR_Tf", "ME_Ti","ME_Tf"))
 
 print(Shannon_div)
 
