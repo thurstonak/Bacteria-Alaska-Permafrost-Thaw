@@ -47,15 +47,15 @@ rarecurve <- ggrare(ps3,step = 1000,color = "Location")
 ###To change color of plot
 plot_custom <- rarecurve + 
   geom_ribbon(aes(ymin = .S - .se, ymax = .S + .se, fill = Location), alpha = 0.3) +
-  scale_fill_manual(values = custom_colors) +
+  scale_fill_manual(values = custom_colors, labels = c("OT27" = "PT27", "OT45" = "PT45", "TR" = "EAFB", "ME" = "JR", "PT_EB" = "EB")) +
   theme_bw() +  theme(text = element_text(size = 16))
 
 print(plot_custom)
 
-plot_custom <-plot_custom +   scale_color_manual(values = custom_colors) + theme_bw() + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"), text = element_text(size = 16, family = "Times New Roman"), legend.text = element_text(size = 14, family = "Times New Roman"), plot.title = element_text(family = "Times New Roman"), plot.subtitle = element_text(family = "Times New Roman"),plot.caption = element_text(family = "Times New Roman"),strip.text = element_text(family = "Times New Roman"))
+plot_custom <-plot_custom +   scale_color_manual(values = custom_colors, labels = c("OT27" = "PT27", "OT45" = "PT45", "TR" = "EAFB", "ME" = "JR", "PT_EB" = "EB")) + theme_bw() + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"), text = element_text(size = 16, family = "Times New Roman"), legend.text = element_text(size = 14, family = "Times New Roman"), plot.title = element_text(family = "Times New Roman"), plot.subtitle = element_text(family = "Times New Roman"),plot.caption = element_text(family = "Times New Roman"),strip.text = element_text(family = "Times New Roman"))
 print(plot_custom)
 
-ggsave((here,"plot_custom.png"),plot=plot_custom,device = "png", width = 30, height = 18, units = "cm", dpi = 600, limitsize = FALSE)
+ggsave(here("plot_custom.png"),plot=plot_custom,device = "png", width = 30, height = 18, units = "cm", dpi = 600, limitsize = FALSE)
 
 ####################################Filter out DC samples
 #For this study is was decided that the DC samples are supplemental and not included in the main text, so DC samples are remove prior to rarefying.  
@@ -76,15 +76,15 @@ rarecurve_after<-ggrare(ps5, step = 500, color = "Location")
 
 plot_custom1 <- rarecurve_after + 
   geom_ribbon(aes(ymin = .S - .se, ymax = .S + .se, fill = Location), alpha = 0.3) +
-  scale_fill_manual(values = custom_colors) +
+  scale_fill_manual(values = custom_colors, labels = c("OT27" = "PT27", "OT45" = "PT45", "TR" = "EAFB", "ME" = "JR")) +
   theme_bw() +  theme(text = element_text(size = 16))
 
 print(plot_custom1)
 
-plot_custom1<-plot_custom1 +   scale_color_manual(values = custom_colors) + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"), text = element_text(size = 16, family = "Times New Roman"), legend.text = element_text(size = 14, family = "Times New Roman"), plot.title = element_text(family = "Times New Roman"), plot.subtitle = element_text(family = "Times New Roman"), plot.caption = element_text(family = "Times New Roman"), strip.text = element_text(family = "Times New Roman"))
+plot_custom1<-plot_custom1 +   scale_color_manual(values = custom_colors, labels = c("OT27" = "PT27", "OT45" = "PT45", "TR" = "EAFB", "ME" = "JR")) + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"), text = element_text(size = 16, family = "Times New Roman"), legend.text = element_text(size = 14, family = "Times New Roman"), plot.title = element_text(family = "Times New Roman"), plot.subtitle = element_text(family = "Times New Roman"), plot.caption = element_text(family = "Times New Roman"), strip.text = element_text(family = "Times New Roman"))
 print(plot_custom1)
 
-ggsave((here,"plot_custom1.png"), plot=plot_custom1,device = "png", width = 30, height = 18, units = "cm", dpi = 600, limitsize = FALSE)
+ggsave(here("plot_custom1.png"), plot=plot_custom1,device = "png", width = 30, height = 18, units = "cm", dpi = 600, limitsize = FALSE)
 
 ps5
 
