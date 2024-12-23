@@ -12,6 +12,7 @@
 #TR = EAFB
 #ME = JR
 #DC = DC
+#PT_EB = EB (extraction blank)
 
 
 ########################
@@ -52,6 +53,7 @@ plot_custom <- rarecurve +
 print(plot_custom)
 
 plot_custom <-plot_custom +   scale_color_manual(values = custom_colors) + theme_bw() + theme_bw() + theme(axis.text = element_text(size = 16, family = "Times New Roman"), text = element_text(size = 16, family = "Times New Roman"), legend.text = element_text(size = 14, family = "Times New Roman"), plot.title = element_text(family = "Times New Roman"), plot.subtitle = element_text(family = "Times New Roman"),plot.caption = element_text(family = "Times New Roman"),strip.text = element_text(family = "Times New Roman"))
+print(plot_custom)
 
 ggsave((here,"plot_custom.png"),plot=plot_custom,device = "png", width = 30, height = 18, units = "cm", dpi = 600, limitsize = FALSE)
 
