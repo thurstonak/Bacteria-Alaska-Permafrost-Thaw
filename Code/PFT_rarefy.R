@@ -20,7 +20,7 @@
 #Load everything up
 library(ggplot2) #https://ggplot2.tidyverse.org/
 library (here)
-library(microbiome)
+library(ranacapa)
 
 set.seed(512)
 ##############ps3 was given to Chris and he removed mitochondria and created a tree. He also changed OTU sequences to OTU names. Will import new rds object from chris and rarify from there.  
@@ -38,7 +38,8 @@ custom_colors <- c("OT27" = "#A6D854",
                    "BEO" = "#66C2A5", 
                    "OT45" = "#FFD92F", 
                    "DC" = "#FC8D62", 
-                   "ME" = "#E78AC3")
+                   "ME" = "#E78AC3",
+                  "PT_EB" = "#B3B3B3")
 
 rarecurve <- ggrare(ps3,step = 1000,color = "Location")
 
@@ -63,7 +64,11 @@ ps4
 
 ####### Make ps5 #######
 ##
-
+custom_colors1 <- c("OT27" = "#A6D854", 
+                   "TR" = "#8DA0CB", 
+                   "BEO" = "#66C2A5", 
+                   "OT45" = "#FFD92F", 
+                   "ME" = "#E78AC3")
 ps5<-rarefy_even_depth(ps4, sample.size = 9104, rngseed = 512)
 rarecurve_after<-ggrare(ps5, step = 500, color = "Location") 
 
