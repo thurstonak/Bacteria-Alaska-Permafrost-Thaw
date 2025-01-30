@@ -63,7 +63,7 @@ Figures 4, 5, and 6 were generated using the following scripts:
 
 - **Code:** `PFT_assembly.R`
 - **Figure 7:** Created with `PFT_plot_assembly_barchart.R`
-- Input: bin\_by\_percent\_forR\_FT\_v2.csv
+- **Input**: `bin\_by\_percent\_forR\_FT\_v2.csv`
 
 ---
 
