@@ -7,7 +7,7 @@ This repo is maintained by Alison Thurston ([@thurstonak](https://github.com/thu
 
 This repository contains scripts used for the analysis of 16S rRNA sequencing data. Raw sequence data has been archived in the NCBI Sequence Read Archive under **BioProject: PRJNA1152638** and is not included in this repository.
 
-###1. Sequence Processing with DADA2
+##1. Sequence Processing with DADA2
 
 **Description:** Sequences were processed using DADA2, and a phyloseq object was created.
 
