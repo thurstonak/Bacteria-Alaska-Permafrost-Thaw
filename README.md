@@ -77,8 +77,6 @@ Figures 4, 5, and 6 were generated using the following scripts:
 ---
 
 ### Notes
-
-- Ensure that all required dependencies and R packages are installed before running the scripts.
 - Some analyses were conducted on an HPC, so modifications may be required to run locally.
 - The final processed phyloseq object is `ps5.rds`, which serves as the input for most downstream analyses.
 
