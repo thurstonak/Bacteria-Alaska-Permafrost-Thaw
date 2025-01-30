@@ -34,7 +34,7 @@ This repository contains scripts used for the analysis of 16S rRNA sequencing da
 - **Input:** `ps3.rds`
 - **Output:** `ps3_pruned_modified_with_tree.rds`
 
-## 4. Rarefaction & Sample Removal
+## 4. Rarefying & Sample Removal
 
 **Description:** Sequences were rarefied, and DC samples were removed.
 
