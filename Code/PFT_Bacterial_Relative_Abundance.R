@@ -1,5 +1,5 @@
 ###Changes in Permafrost Bacterial Community Composition after Thaw Across Multiple Alaskan Locations 
-
+###Alison Thurston
 ###Bacterial relative abundance plots 
 
 ####This script is for the thaw incubation study performed over an 8 week period with 6 types of permafrost collected around Alaska.  The study contains 6 replicates for each location. DNA was extracted in the beginning of the experiment and after an 8 week 4 step thaw (-3,0,3,6). 
