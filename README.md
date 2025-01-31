@@ -1,10 +1,12 @@
 # Pipeline for Alaskan Permafrost Thaw Study
 
-This repository contains details of the thaw incubation study conducted over an 8-week period, using 6 types of permafrost collected from various locations across Alaska. DNA was extracted at the start of the experiment and after an 8-week, 4-stage thaw process, with temperature transitions at -3°C, 0°C, 3°C, and 6°C.
+**\*\* Add citation information \*\***
+
+This repository contains details of the thaw incubation study **\*\* Add link to paper \*\*** conducted over an 8-week period, using 6 types of permafrost collected from various locations across Alaska. DNA was extracted at the start of the experiment and after an 8-week, 4-stage thaw process, with temperature transitions at -3°C, 0°C, 3°C, and 6°C.
 
 This repo is maintained by Alison Thurston ([@thurstonak](https://github.com/thurstonak)) and includes content from Chris Baker ([@bakerccm](https://github.com/bakerccm)) and Stacey Doherty.
 
-This repository contains scripts used for the analysis of 16S rRNA sequencing data. Raw sequence data has been archived in the NCBI Sequence Read Archive under **BioProject: PRJNA1152638** and is not included in this repository.
+This repository contains scripts used for the analysis of 16S rRNA sequencing data. Raw sequence data has been archived in the NCBI Sequence Read Archive under **BioProject: PRJNA1152638** **\*\* add link \*\*** and is not included in this repository.
 
 The location names were changed for the paper.
 - Sample data name = **Paper name**
