@@ -8,8 +8,6 @@ The code in this repo is written and maintained by Alison Thurston ([@thurstonak
 
 **\*\* Write out full paper citation here \*\***
 
----
-
 ## 16S Sequencing Data
 
 Raw 16S rRNA sequence data have been archived in the NCBI Sequence Read Archive under **BioProject: PRJNA1152638** **\*\* add link \*\*** and are not included in this repository.
@@ -23,8 +21,6 @@ The location names used in the SRA submission were changed for the paper, as fol
 - TR = **EAFB**
 - ME = **JR**
 - DC = **DC**
-
----
 
 ## 16S rRNA DNA Sequencing Pipeline
 
@@ -70,8 +66,6 @@ The location names used in the SRA submission were changed for the paper, as fol
 - Some analyses were conducted on an HPC, so modifications may be required to run locally.
 - The final processed phyloseq object is [`ps5.rds`](outputs/ps5.rds), which serves as the input for most downstream analyses below.
 
----
-
 ## Downstream Analyses
 
 ### Bacterial Diversity & Relative Abundance
@@ -99,5 +93,3 @@ Figures 4, 5, and 6 were generated using the following scripts:
 
 - **Code:** [`PFT_soilproperties.Rmd`](Code/PFT_soilproperties.Rmd)
 - **Input:** [`230810_ANOVA_Soilpropertiesv3.xlsx`](Data/230810_ANOVA_Soilpropertiesv3.xlsx)
-
----
