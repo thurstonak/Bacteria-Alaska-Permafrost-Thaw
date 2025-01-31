@@ -40,16 +40,16 @@ The location names were changed for the paper.
 
 **Description:** Sequences classified as mitochondria were removed, and a phylogenetic tree was generated. Some of this step was run on an HPC. 
 
-- **Code:** [snakefile](Code/Chris's\ code/PFT_SEPP_placement_Chris/snakefile)
-- **Input:** [`ps3.rds`](Code/Chris's\ code/PFT_SEPP_placement_Chris/data/ps3.rds) (copy of file at [`ps3.rds`](outputs/ps3.rds))
-- **Output:** [`ps3_pruned_modified_with_tree.rds`](Code/Chris's\ code/PFT_SEPP_placement_Chris/out/ps3_pruned_modified_with_tree.rds)
+- **Code:** [snakefile](<Code/Chris's code/PFT_SEPP_placement_Chris/snakefile>)
+- **Input:** [`ps3.rds`](<Code/Chris's code/PFT_SEPP_placement_Chris/data/ps3.rds>) (copy of file at [`ps3.rds`](outputs/ps3.rds))
+- **Output:** [`ps3_pruned_modified_with_tree.rds`](<Code/Chris's code/PFT_SEPP_placement_Chris/out/ps3_pruned_modified_with_tree.rds>)
 
 ## 4. Rarefying & Sample Removal
 
 **Description:** Sequences were rarefied, and DC samples were removed.
 
 - **Code:** [`PFT_rarefy.R`](Code/PFT_rarefy.R)
-- **Input:** [`ps3_pruned_modified_with_tree.rds`](outputs/ps3_pruned_modified_with_tree.rds) (copy of file at [`ps3_pruned_modified_with_tree.rds`](Code/Chris's\ code/PFT_SEPP_placement_Chris/out/ps3_pruned_modified_with_tree.rds))
+- **Input:** [`ps3_pruned_modified_with_tree.rds`](outputs/ps3_pruned_modified_with_tree.rds) (copy of file at [`ps3_pruned_modified_with_tree.rds`](<Code/Chris's code/PFT_SEPP_placement_Chris/out/ps3_pruned_modified_with_tree.rds>))
 - **Output:**
   - [`ps4.rds`](outputs/ps4.rds) (DC samples removed)
   - [`ps5.rds`](outputs/ps5.rds) (final phyloseq object after rarefying and DC removal)
