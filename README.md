@@ -1,4 +1,4 @@
-# Bacteria-Alaska-Permafrost-Thaw
+# Pipeline for Alaskan Permafrost Thaw Study
 
 This repository contains details of the thaw incubation study conducted over an 8-week period, using 6 types of permafrost collected from various locations across Alaska. DNA was extracted at the start of the experiment and after an 8-week, 4-stage thaw process, with temperature transitions at -3°C, 0°C, 3°C, and 6°C.
 
