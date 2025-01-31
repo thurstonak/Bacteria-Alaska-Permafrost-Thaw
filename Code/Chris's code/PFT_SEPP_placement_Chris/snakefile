@@ -1,0 +1,94 @@
+# snakefile for processing Alison's permafrost thaw data
+
+# Chris Baker
+# https://github.com/bakerccm
+# 23 June 2023
+
+from snakemake.utils import min_version
+min_version("7.25.0")
+
+################################
+## get config file
+
+configfile: 'config/config.yaml'
+
+################################
+## wildcard constraints
+
+wildcard_constraints:
+    sample = '[^/\.]+',
+    file = '[^/\.]+',
+    read = 'R[12]'
+
+################################
+# default rule
+
+rule all:
+    input:
+        "out/ps3_pruned_modified_with_tree.rds"
+
+################################
+# removes ASVs identified as mitochondria
+rule remove_mitochondria:
+    input:
+        "data/ps3.rds"
+    output:
+        "out/ps3_pruned.rds"
+    log:
+        "out/ps3_pruned.log"
+    conda:
+        "envs/phyloseq.yaml"
+    shell:
+        "Rscript code/remove_mitochondria.R {input} {output} >{log}"
+
+################################
+# extracts sequences from phyloseq object and renames ASVs
+rule export_fasta:
+    input:
+        "out/ps3_pruned.rds"
+    output:
+        phyloseq = "out/ps3_pruned_modified.rds",
+        fasta = "out/ps3_pruned_modified.fasta"
+    log:
+        "out/ps3_pruned_modified.log"
+    conda:
+        "envs/phyloseq.yaml"
+    shell:
+        "Rscript code/export_fasta.R {input} {output.phyloseq} {output.fasta} >{log}"
+
+################################
+# Uses SEPP to place ASVs in greengenes tree
+# Note: SEPP needs to be installed separately (not through conda) in the `/software/sepp-package` folder.
+# The `sepp_env` conda environment provides a suitable runtime environment but does not actually install SEPP.
+rule run_sepp:
+    input:
+        "out/ps3_pruned_modified.fasta"
+    output:
+        "out/ps3_pruned_modified_placement.tog.tre"
+    conda:
+        "envs/sepp_env.yaml"
+    threads:
+        config["SEPP"]["threads"]
+    shell:
+        # running sepp by cd'ing into this directory seems to be the way to do it but it requires some convoluted relative paths to get it to work here
+        '''
+        cd out
+        ../software/sepp-package/run-sepp.sh ps3_pruned_modified.fasta ps3_pruned_modified -x {threads}
+        '''
+
+################################
+# adds placement tree back to phyloseq object
+rule add_tree:
+    input:
+        phyloseq = "out/ps3_pruned_modified.rds",
+        placement = "out/ps3_pruned_modified_placement.tog.tre"
+    output:
+        "out/ps3_pruned_modified_with_tree.rds"
+    log:
+        "out/ps3_pruned_modified_with_tree.log"
+    conda:
+       	"envs/phyloseq.yaml"
+    shell:
+        "Rscript code/add_tree.R {input.phyloseq} {input.placement} {output} >{log}"
+
+################################
