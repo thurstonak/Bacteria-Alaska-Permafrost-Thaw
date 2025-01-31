@@ -80,7 +80,6 @@ Figures 4, 5, and 6 were generated using the following scripts:
 
 - **Code:** [`PFT_assembly.R`](Code/PFT_assembly.R)
 - **Input:** [`ps5.rds`](outputs/ps5.rds)
-
 - **Figure 7:** Created with [`PFT_plot_assembly_barchart.R`](Code/PFT_plot_assembly_barchart.R)
 - **Input:** [`bin_by_percent_forR_FT_v2.csv`](Data/Data/bin_by_percent_forR_FT_v2.csv)
 
