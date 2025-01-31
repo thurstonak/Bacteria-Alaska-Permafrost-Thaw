@@ -61,7 +61,7 @@ The location names used in the SRA submission were changed for the paper, as fol
   - [`ps4.rds`](outputs/ps4.rds) (DC samples removed)
   - [`ps5.rds`](outputs/ps5.rds) (final phyloseq object after rarefying and DC removal)
 
-- The final processed phyloseq object is [`ps5.rds`](outputs/ps5.rds), which serves as the input for most downstream analyses below.
+The final processed phyloseq object is [`ps5.rds`](outputs/ps5.rds), which serves as the input for most downstream analyses below.
 
 ## Downstream Analyses
 
