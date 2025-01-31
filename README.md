@@ -26,11 +26,11 @@ The location names used in the SRA submission were changed for the paper, as fol
 
 ### 1. DADA2 and Phyloseq 
 
-   **Description:** Sequences were processed using DADA2, and a phyloseq object was created.
+**Description:** Sequences were processed using DADA2, and a phyloseq object was created.
  
-   - **Code:** [`PFT_dada2_pipeline.R`](Code/PFT_dada2_pipeline.R)
-   - **Input:** 16S sequence reads, [`sample_data.txt`](Data/sample_data.txt)
-   - **Output:** [`ps.rds`](outputs/ps.rds)
+- **Code:** [`PFT_dada2_pipeline.R`](Code/PFT_dada2_pipeline.R)
+- **Input:** 16S sequence reads, [`sample_data.txt`](Data/sample_data.txt)
+- **Output:** [`ps.rds`](outputs/ps.rds)
 
 ### 2. Sequence Filtering
 
