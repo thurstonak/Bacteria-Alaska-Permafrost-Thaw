@@ -7,13 +7,13 @@ This repo is maintained by Alison Thurston ([@thurstonak](https://github.com/thu
 This repository contains scripts used for the analysis of 16S rRNA sequencing data. Raw sequence data has been archived in the NCBI Sequence Read Archive under **BioProject: PRJNA1152638** and is not included in this repository.
 
 The location names were changed for the paper.
-Sample data name = **Paper name**
-BEO = **BEO**
-OT27 = **PT27**
-OT45 = **PT45**
-TR = **EAFB**
-ME = **JR**
-DC = **DC**
+-Sample data name = **Paper name**
+-BEO = **BEO**
+-OT27 = **PT27**
+-OT45 = **PT45**
+-TR = **EAFB**
+-ME = **JR**
+-DC = **DC**
 
 ## 16S rRNA DNA Sequencing Pipeline
 
