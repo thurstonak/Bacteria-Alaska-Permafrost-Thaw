@@ -45,7 +45,7 @@ The location names used in the SRA submission were changed for the paper, as fol
 
 ### 3. Mitochondrial Sequence Removal & Tree Construction
 
-**Description:** Sequences classified as mitochondria were removed, and a phylogenetic tree was generated. Some of this step was run on an HPC. 
+**Description:** Sequences classified as mitochondria were removed, and a phylogenetic tree was generated. 
 
 - **Code:** [`snakefile`](<Code/Chris's code/PFT_SEPP_placement_Chris/snakefile>)
 - **Input:** [`ps3.rds`](<Code/Chris's code/PFT_SEPP_placement_Chris/data/ps3.rds>) (copy of file at [`ps3.rds`](outputs/ps3.rds))
@@ -61,9 +61,6 @@ The location names used in the SRA submission were changed for the paper, as fol
   - [`ps4.rds`](outputs/ps4.rds) (DC samples removed)
   - [`ps5.rds`](outputs/ps5.rds) (final phyloseq object after rarefying and DC removal)
 
-### Notes
-
-- Some analyses were conducted on an HPC, so modifications may be required to run locally.
 - The final processed phyloseq object is [`ps5.rds`](outputs/ps5.rds), which serves as the input for most downstream analyses below.
 
 ## Downstream Analyses
