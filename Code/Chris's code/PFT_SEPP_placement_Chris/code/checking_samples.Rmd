@@ -1,0 +1,82 @@
+# code to check samples OT27_Tf_4 and OT27_Tf_6
+
+```{r load packages}
+
+library("here")
+
+# phyloseq
+# note phyloseq install instructions at https://joey711.github.io/phyloseq/install.html use BiocLite rather than BiocManager as used here; the latter is preferred with R > 3.5
+# library("BiocManager")
+# BiocManager::install("phyloseq")
+library("phyloseq")
+
+# microViz
+# if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+# BiocManager::install(c("phyloseq", "microbiome", "ComplexHeatmap"), update = FALSE)
+# install.packages("devtools")
+# devtools::install_github("david-barnett/microViz") # gets latest version
+library("microViz")
+
+library("tidyverse")
+
+```
+
+```{r get data}
+# data provided by Alison
+ps <- readRDS(here("data", "ps3.rds"))
+```
+
+```{r}
+#  get samples OT27_Tf_4 and OT27_Tf_6
+
+ps_OT27_Tf_4 <- ps %>%
+    subset_samples(Description == "OT27_Tf_4") %>%
+    tax_sort(by = sum)
+
+ps_OT27_Tf_6 <- ps %>%
+    subset_samples(Description == "OT27_Tf_6") %>%
+    tax_sort(by = sum)
+
+```
+
+```{r}
+# get taxonomy info
+
+    ps_OT27_Tf_4.df <- ps_OT27_Tf_4 %>% tax_table() %>% as.data.frame()
+    
+    ps_OT27_Tf_6.df <- ps_OT27_Tf_6 %>% tax_table() %>% as.data.frame()
+
+# attach relative abundance info
+    
+    ps_OT27_Tf_4.df <- ps_OT27_Tf_4.df %>%
+        mutate(read.count = taxa_sums(ps_OT27_Tf_4)) %>%
+        mutate(relative.read.count = read.count / sum(read.count))
+    
+    ps_OT27_Tf_6.df <- ps_OT27_Tf_6.df %>%
+        mutate(read.count = taxa_sums(ps_OT27_Tf_6)) %>%
+        mutate(relative.read.count = read.count / sum(read.count))
+
+```
+
+```{r}
+# top two taxa in each sample are listed as mitochondria 
+
+    ps_OT27_Tf_4.df %>% head(10)
+
+    ps_OT27_Tf_6.df %>% head(10)
+
+```
+
+```{r}
+    
+# get sequences for the top two taxa
+    rownames(ps_OT27_Tf_4.df)[1:2]
+
+    rownames(ps_OT27_Tf_6.df)[1:2]
+
+
+```
+
+
+
+
