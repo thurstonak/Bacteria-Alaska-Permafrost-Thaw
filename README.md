@@ -40,7 +40,7 @@ The location names were changed for the paper.
 
 **Description:** Sequences classified as mitochondria were removed, and a phylogenetic tree was generated. Some of this step was run on an HPC. 
 
-- **Code:** [snakefile](<Code/Chris's code/PFT_SEPP_placement_Chris/snakefile>)
+- **Code:** [`snakefile`](<Code/Chris's code/PFT_SEPP_placement_Chris/snakefile>)
 - **Input:** [`ps3.rds`](<Code/Chris's code/PFT_SEPP_placement_Chris/data/ps3.rds>) (copy of file at [`ps3.rds`](outputs/ps3.rds))
 - **Output:** [`ps3_pruned_modified_with_tree.rds`](<Code/Chris's code/PFT_SEPP_placement_Chris/out/ps3_pruned_modified_with_tree.rds>)
 
