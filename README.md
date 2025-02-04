@@ -6,7 +6,7 @@ The code in this repo is written and maintained by Alison Thurston ([@thurstonak
 
 ### Citation
 
-**\*\* Write out full paper citation here \*\***
+Thurston, Alison K., Stacey J. Doherty, Robert M. Jones, Thomas A. Douglas, Christopher C.M. Baker, Elizabeth J. Corriveau and Robyn A. Barbato. Changes in permafrost bacterial community composition after thaw across multiple Alaskan locations. Ecosphere (Accepted)
 
 ## 16S Sequencing Data
 
