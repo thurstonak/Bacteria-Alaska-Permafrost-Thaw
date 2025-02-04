@@ -10,7 +10,7 @@ Thurston, Alison K., Stacey J. Doherty, Robert M. Jones, Thomas A. Douglas, Chri
 
 ## 16S Sequencing Data
 
-Raw 16S rRNA sequence data have been archived in the NCBI Sequence Read Archive under **BioProject: PRJNA1152638** **\*\* add link \*\*** and are not included in this repository.
+Raw 16S rRNA sequence data have been archived in the NCBI Sequence Read Archive under [**BioProject: PRJNA1152638**](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1152638) and are not included in this repository.
 
 The location names used in the SRA submission were changed for the paper, as follows:
 
