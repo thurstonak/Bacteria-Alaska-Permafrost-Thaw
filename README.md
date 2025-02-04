@@ -1,6 +1,6 @@
 # Alaskan Permafrost Thaw Study
 
-This repo contains code and selected output files from the Alaskan permafrost thaw study published in **\*\*Add link/citation\*\***. The thaw experiment reported in this study was conducted over an 8-week period, using 6 types of permafrost collected from various locations across Alaska, USA. DNA was extracted at the start of the experiment and after an 8-week, 4-stage thaw process, with temperature transitions at -3°C, 0°C, 3°C, and 6°C.
+This repo contains code and selected output files from the Alaskan permafrost thaw study published in [Ecosphere](https://esajournals.onlinelibrary.wiley.com/journal/21508925). The thaw experiment reported in this study was conducted over an 8-week period, using 6 types of permafrost collected from various locations across Alaska, USA. DNA was extracted at the start of the experiment and after an 8-week, 4-stage thaw process, with temperature transitions at -3°C, 0°C, 3°C, and 6°C.
 
 The code in this repo is written and maintained by Alison Thurston ([@thurstonak](https://github.com/thurstonak)), with contributed content from Chris Baker ([@bakerccm](https://github.com/bakerccm)) and Stacey Doherty ([@sljarvis2](https://github.com/sljarvis2)).
 
