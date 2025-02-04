@@ -60,5 +60,5 @@ write.csv(ps2.taxa.df,"~ps2.taxa.df.csv")
 write.csv(ps3.taxa.df,"~ps3.taxa.df.csv")
 
 
-############## AT this point ps3.rds was utilized in another program for tree creation. Mitochondria were also removed during this process. See scripts in Chris's folder.  
+############## AT this point ps3.rds was utilized in another program for tree creation. Mitochondria were also removed during this process. See scripts in Chris's code folder.  
 
